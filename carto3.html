@@ -89,11 +89,35 @@ function initialize() {
 	map.mapTypes.set('MapQuest',mapQuestType);
 	map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(document.getElementById("mapCopyright"));
 
+	// Fonction fermer les infobulles et les animations sur les markers
+	
+	function closeInfoAnim(){
+		info_Iwuy.close();
+		info_Thun.close();
+		info_Salesches.close();
+		marker_Iwuy.setAnimation(null);
+		marker_Thun.setAnimation(null);
+		marker_Salesches.setAnimation(null);
+	}
+	
 	// Fonction affichage des infobulles
 	
 	function openInfoIwuy(){
+		closeInfoAnim();
 		info_Iwuy.open(map,marker_Iwuy);
 		marker_Iwuy.setAnimation(google.maps.Animation.BOUNCE);
+	};
+	
+	function openInfoThun(){
+		closeInfoAnim();
+		info_Thun.open(map,marker_Thun);
+		marker_Thun.setAnimation(google.maps.Animation.BOUNCE);
+	};
+	
+	function openInfoSalesches(){
+		closeInfoAnim();
+		info_Salesches.open(map,marker_Salesches);
+		marker_Salesches.setAnimation(google.maps.Animation.BOUNCE);
 	};
 	
 	// Création des marqueurs
@@ -118,13 +142,26 @@ function initialize() {
 	
 	// Création des infobulles
 	
-	var info_Iwuy = new google.maps.InfoWindow({
-		content: "<h3>Mariage à la Mairie d'Iwuy</h1><p>14h30</p>"
+	info_Iwuy = new google.maps.InfoWindow({
+		content: "<h3>Mariage à la Mairie d'Iwuy</h3><p>14h30</p>"
 	});
+	info_Iwuy.addListener("closeclick",closeInfoAnim);
+	
+	var info_Thun = new google.maps.InfoWindow({
+		content: "<h3>Mariage à l'église de Thun</h3><p>14h30</p>"
+	});
+	info_Thun.addListener("closeclick",closeInfoAnim);
+	
+	var info_Salesches = new google.maps.InfoWindow({
+		content: "<h3>Réception à la ferme de Saint-Humbert</h3><p>17h30</p>"
+	});
+	info_Salesches.addListener("closeclick",closeInfoAnim);
 	
 	// Ajout des déclencheurs
 	
  	marker_Iwuy.addListener('click', openInfoIwuy);
+	marker_Thun.addListener('click', openInfoThun);
+	marker_Salesches.addListener('click', openInfoSalesches);
 }
 
 </script>
