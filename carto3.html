@@ -196,6 +196,9 @@ function initialize() {
 	function foncBoutonVintage(){
 		if (map.getZoom()>14){
 			map.setZoom(14);
+		} else if (map.getZoom()<9){
+			map.setZoom(9);
+			map.panTo(latlng);
 		};
 		map.setMapTypeId('VintageMap');
 		document.getElementById("boutonVersGoogle").style.display= "inline";
@@ -207,6 +210,11 @@ function initialize() {
 	
 	function zoomChange(){
 		if (map.getZoom()>14 && map.getMapTypeId()=="VintageMap"){
+			map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+			document.getElementById("boutonVersGoogle").style.display= "none";
+			document.getElementById("boutonVersSatellite").style.display= "inline";
+			document.getElementById("boutonVersVintage").style.display= "none";
+		} else if (map.getZoom()<9 && map.getMapTypeId()=="VintageMap"){
 			map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 			document.getElementById("boutonVersGoogle").style.display= "none";
 			document.getElementById("boutonVersSatellite").style.display= "inline";
