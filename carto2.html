@@ -88,43 +88,12 @@ function initialize() {
 	map.mapTypes.set('VintageMap',VintageMap);
 	map.mapTypes.set('MapQuest',mapQuestType);
 	map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(document.getElementById("mapCopyright"));
-
-	// Fonction affichage des infobulles
 	
-	function openInfoIwuy(){
-		info_Iwuy.open(map,marker_Iwuy);
-		marker_Iwuy.setAnimation(google.maps.Animation.BOUNCE);
-	};
+	//Image pleyel
+	/*var coordimagepleyel = new google.maps.LatLngBounds(new google.maps.LatLng(50.10052,3.19685),new google.maps.LatLng(50.319757,3.681348));			
+	pleyel = new google.maps.GroundOverlay("carte.jpeg",coordimagepleyel); 
+	pleyel.setMap(map);*/
 	
-	// Création des marqueurs
-	
-	var marker_Iwuy = new google.maps.Marker({
-		position: new google.maps.LatLng(50.232737, 3.321795),
-		map: map,
-		title: 'Mairie'
-	});
-	
-	var marker_Thun = new google.maps.Marker({
-		position: new google.maps.LatLng(50.225688, 3.296193),
-		map: map,
-		title: 'Église'
-	});
-	
-	var marker_Salesches = new google.maps.Marker({
-		position: new google.maps.LatLng(50.204359, 3.591174),
-		map: map,
-		title: 'Réception ferme de Saint-Humbert : 17h30'
-	});
-	
-	// Création des infobulles
-	
-	var info_Iwuy = new google.maps.InfoWindow({
-		content: "<h3>Mariage à la Mairie d'Iwuy</h1><p>14h30</p>"
-	});
-	
-	// Ajout des déclencheurs
-	
- 	marker_Iwuy.addListener('click', openInfoIwuy);
 }
 
 </script>
