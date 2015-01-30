@@ -224,22 +224,27 @@ function initialize() {
 	
 	// Création des marqueurs
 	
+	var sizeIcon = new google.maps.Size(49,52); // taille des icônes
+	
 	var marker_Iwuy = new google.maps.Marker({
 		position: new google.maps.LatLng(50.232737, 3.321795),
 		map: map,
-		title: 'Mairie'
+		title: 'Mairie',
+		icon: {url: "Mairie.png", scaledSize: sizeIcon}
 	});
 	
 	var marker_Thun = new google.maps.Marker({
 		position: new google.maps.LatLng(50.225688, 3.296193),
 		map: map,
-		title: 'Église'
+		title: 'Église',
+		icon: {url: "Eglise.png", scaledSize: sizeIcon}
 	});
 	
 	var marker_Salesches = new google.maps.Marker({
 		position: new google.maps.LatLng(50.204359, 3.591174),
 		map: map,
-		title: 'Réception ferme de Saint-Humbert : 17h30'
+		title: 'Réception ferme de Saint-Humbert : 17h30',
+		icon: {url: "Verre.png", scaledSize: sizeIcon}
 	});
 	
 	// Création des infobulles
